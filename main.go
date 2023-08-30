@@ -1,9 +1,7 @@
 package main
 
 import (
-	"appointments-api/mypackage"
 	"fmt"
-	"log"
 	// "net/http"
 )
 
@@ -17,15 +15,8 @@ func (p Person) PrintHelloWithStruct() {
 }
 
 func main() {
-	message, err := mypackage.PrintHello("João")
-
-	if err != nil {
-		log.Fatal(err)
-	}
-
 	p := Person{Name: "João", Age: 26}
 
-	fmt.Println(message)
 	p.PrintHelloWithStruct()
 
 	// http.ListenAndServe(":8080", nil)
