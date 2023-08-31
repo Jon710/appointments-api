@@ -1,6 +1,7 @@
 package main
 
 import (
+	"appointments-api/types"
 	"database/sql"
 	"encoding/json"
 	"log"
@@ -9,12 +10,6 @@ import (
 	"github.com/gorilla/mux"
 	_ "github.com/lib/pq"
 )
-
-type Patient struct {
-	ID    int    `json:"id"`
-	Name  string `json:"name"`
-	Email string `json:"email"`
-}
 
 func main() {
 	db, err := sql.Open("postgres", "user=joaoluismoraes dbname=appointments password=999selva sslmode=disable")
@@ -48,9 +43,9 @@ func getPatients(db *sql.DB) http.HandlerFunc {
 		}
 		defer rows.Close()
 
-		patients := []Patient{}
+		patients := []types.Patient{}
 		for rows.Next() {
-			var p Patient
+			var p types.Patient
 			if err := rows.Scan(&p.ID, &p.Name, &p.Email); err != nil {
 				log.Fatal(err)
 			}
@@ -66,7 +61,7 @@ func getPatients(db *sql.DB) http.HandlerFunc {
 
 func createPatient(db *sql.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		var p Patient
+		var p types.Patient
 		json.NewDecoder(r.Body).Decode(&p)
 
 		err := db.QueryRow("INSERT INTO patients (name, email) VALUES ($1, $2) RETURNING id", p.Name, p.Email).Scan(&p.ID)
