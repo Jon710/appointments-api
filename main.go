@@ -32,6 +32,8 @@ func main() {
 	router := mux.NewRouter()
 	router.HandleFunc("/patients", handlers.GetPatients(db)).Methods("GET")
 	router.HandleFunc("/patients", handlers.CreatePatient(db)).Methods("POST")
+	router.HandleFunc("/doctors", handlers.GetDoctors(db)).Methods("GET")
+	router.HandleFunc("/doctors", handlers.CreateDoctor(db)).Methods("POST")
 	// router.HandleFunc("/users/{id}", getUser(db)).Methods("GET")
 	// router.HandleFunc("/users/{id}", updateUser(db)).Methods("PUT")
 
