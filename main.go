@@ -35,7 +35,7 @@ func main() {
 	router.HandleFunc("/doctors", handlers.GetDoctors(db)).Methods("GET")
 	router.HandleFunc("/doctors", handlers.CreateDoctor(db)).Methods("POST")
 	router.HandleFunc("/appointments", handlers.CreateWeeklyAppointments(db)).Methods("POST")
-	// router.HandleFunc("/appointments/{appointmentId}", handlers.ScheduleAppointment(db)).Methods("PUT")
+	router.HandleFunc("/appointments/{appointmentId}", handlers.ScheduleAppointment(db)).Methods("PUT")
 
 	log.Fatal(http.ListenAndServe(":8000", middlewares.JsonContentTypeMiddleware(router)))
 }

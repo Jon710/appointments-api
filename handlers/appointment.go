@@ -35,6 +35,9 @@ func CreateWeeklyAppointments(db *sql.DB) http.HandlerFunc {
 	}
 }
 
+// TODO: schedule appt with both locks and channels.
+// Falta esse ScheduleAppointment: paciente deve ser capaz de agendar
+// appointments que estão com status Available. E isso deve lidar com concorrência.
 func ScheduleAppointment(db *sql.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		var d types.Doctor
