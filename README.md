@@ -1,13 +1,11 @@
 # appointments-api
 
 This is an API that allows patients scheduling appointment with their doctor of choice.
-I will simulate patients trying to schedule appointments concurrenctly and solve it in both optimistic (version-based/timestamp in database) and pessimistic (go routines, locks) ways.
+I will simulate patients trying to schedule appointments concurrenctly and solve it in both optimistic (version-based/timestamp in database) and pessimistic (goroutines, db or go locks) ways.
 I intend to use artillery (or something like that) to load test the API.
 
 ## references
 - https://quii.gitbook.io/learn-go-with-tests/go-fundamentals/concurrency
-- https://aprendagolang.com.br/2022/07/20/mutex-ou-channels-como-resolver-race-condition/
-- https://www.youtube.com/watch?v=Ya5KRFrwPug mutexes x channels anthony gg
 - https://www.youtube.com/watch?v=URwmzTeuHdk postgres locks
 - https://www.youtube.com/watch?v=4F-WiPFrPsA pessimistic with Arpit
 - https://betterstack.com/community/guides/scaling-nodejs/nodejs-caching-redis/ (it has an example of artillery)
